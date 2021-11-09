@@ -4,6 +4,16 @@
      </head>
      <body>
 		<?php
+			//Pozostawiene logów -> zapis do pliku
+			$log_dir ='C:\xampp\apache\logs';
+			$file= @fopen($log_dir. '/nowe_logi.log', 'a'); 
+			@flock($file, 2);
+			$string = "Bartosz Sterniczuk port=80";
+		
+			@fwrite($file, $string."\n");
+			@flock($file, 3); 
+			@fclose($file);
+			
 			//Pobranie adresu IP odwiedzającego
 			$ip = $_SERVER['REMOTE_ADDR'];
 			
